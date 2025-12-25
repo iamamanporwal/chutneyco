@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Login - Chutney Co.</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2200d",
+                        "primary-dark": "#c41607",
+                        "secondary": "#225933",
+                        "accent": "#f5a623",
+                        "background-light": "#FAFAF8",
+                        "background-dark": "#221110",
+                        "card-light": "#ffffff",
+                        "card-dark": "#2d1a19",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100 antialiased h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-md w-full bg-white dark:bg-card-dark rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-100 dark:border-gray-800 relative overflow-hidden">
+        <!-- Deco -->
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-secondary to-accent"></div>
+        
+        <div class="text-center mb-10">
+            <a href="index.html" class="inline-block text-2xl font-black tracking-tight mb-2 hover:text-primary transition-colors">Chutney Co.</a>
+            <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Welcome Back</h1>
+            <p class="text-gray-500 dark:text-gray-400 mt-2">Enter your spice credentials.</p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label class="block text-sm font-bold uppercase tracking-wide text-gray-700 dark:text-gray-300 mb-2">Username</label>
+                <input type="text" id="username" class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-background-light dark:bg-background-dark py-3 px-4 focus:ring-primary focus:border-primary transition-all" placeholder="e.g. admin or user">
+            </div>
+            <div>
+                <label class="block text-sm font-bold uppercase tracking-wide text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                <input type="password" id="password" class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-background-light dark:bg-background-dark py-3 px-4 focus:ring-primary focus:border-primary transition-all" placeholder="••••••••">
+            </div>
+            
+            <div id="errorMsg" class="hidden bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm p-3 rounded-lg text-center font-bold">
+                Invalid credentials
+            </div>
+
+            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-primary/30 transition-all hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2">
+                <span>Sign In</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </form>
+
+        <div class="mt-6 flex items-center gap-4">
+            <div class="h-px flex-1 bg-gray-200 dark:bg-gray-700"></div>
+            <span class="text-sm text-gray-400 font-medium">OR</span>
+            <div class="h-px flex-1 bg-gray-200 dark:bg-gray-700"></div>
+        </div>
+
+        <button onclick="handleGoogleLogin()" class="mt-6 w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-white font-bold text-lg py-4 rounded-xl shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-all active:scale-95 flex items-center justify-center gap-3">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-6 h-6" alt="Google">
+            <span>Continue with Google</span>
+        </button>
+
+        <div class="mt-8 text-center">
+            <p class="text-xs text-gray-400">
+                Mock Credentials:<br>
+                Admin: <span class="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded">admin / admin123</span><br>
+                User: <span class="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded">user / user123</span>
+            </p>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+            const errorEl = document.getElementById('errorMsg');
+
+            const result = auth.login(u, p);
+            
+            if (result.success) {
+                if (result.user.role === 'admin') {
+                    window.location.href = 'admin.html';
+                } else {
+                    window.location.href = 'index.html';
+                }
+            } else {
+                errorEl.textContent = result.message;
+                errorEl.classList.remove('hidden');
+                const form = document.getElementById('loginForm');
+                form.classList.add('animate-[shake_0.5s_ease-in-out]');
+                setTimeout(() => form.classList.remove('animate-[shake_0.5s_ease-in-out]'), 500);
+            }
+        });
+
+        async function handleGoogleLogin() {
+            const btn = document.querySelector('button[onclick="handleGoogleLogin()"]');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = `<span class="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-900 dark:border-white"></span>`;
+            
+            await auth.loginWithGoogle();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

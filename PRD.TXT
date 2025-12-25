@@ -1,0 +1,170 @@
+# Product Requirements Document (PRD)
+# Project: Chutney Co. D2C Platform (Phase 2 - Production Readiness)
+
+**Version:** 2.0
+**Date:** December 25, 2025
+**Status:** In Development (Phase 1 Prototype Complete)
+
+---
+
+## 1. Executive Summary
+Chutney Co. is a modern, design-forward D2C e-commerce platform selling premium, small-batch chutneys. The goal is to transition the existing high-fidelity prototype (HTML/Tailwind/JS) into a fully functional, production-grade e-commerce application. This phase focuses on backend integration, secure payments, robust admin management, and user data persistence.
+
+---
+
+## 2. User Personas
+
+### 2.1 The Modern Epicurean (Customer)
+*   **Demographics:** Urban millennial/Gen Z, 25-40, disposable income.
+*   **Goals:** Discover new flavors, aesthetically pleasing unboxing, fast checkout, secure payments.
+*   **Needs:** Easy login (Google), saved addresses, order tracking, transparent shipping.
+
+### 2.2 The E-commerce Operator (Admin)
+*   **Role:** Business Owner / Operations Manager.
+*   **Goals:** Maximize conversion, manage logistics efficiently, analyze growth.
+*   **Needs:** A "God Mode" dashboard to see everything from live revenue to specific customer shipping addresses. Needs tools to run flash sales (Promotions) and handle customer support (Order lookup).
+
+---
+
+## 3. Technical Architecture Overview
+
+### Current Stack (Phase 1 - Built)
+*   **Frontend:** HTML5, Tailwind CSS (CDN), Vanilla JavaScript.
+*   **State Management:** LocalStorage (Simulated Auth, Cart).
+*   **Routing:** Static HTML pages linked via anchors.
+
+### Target Stack (Phase 2 - Requirements)
+*   **Frontend:** React/Next.js or maintain Vanilla JS with API integration.
+*   **Backend:** Node.js/Express or Serverless Functions (AWS Lambda/Vercel).
+*   **Database:** PostgreSQL (Relational data for orders/inventory) or MongoDB.
+*   **Auth Provider:** Firebase Auth or Auth0 (Google Login).
+*   **Payment Gateway:** Razorpay or Stripe (UPI & Credit Cards).
+
+---
+
+## 4. Existing Functionality (Phase 1 - Complete)
+
+The following features are currently implemented in the codebase:
+
+### 4.1 Frontend Pages
+1.  **Homepage (`index.html`):** Editorial-style hero, parallax product effects, horizontal flavor scrolling, social proof section.
+2.  **Shop Page (`shop.html`):** Full product grid, category filters (Mild/Medium/Hot), "Quick Add" hover interactions.
+3.  **Product Detail Page (`product.html`):** Split-screen layout (sticky details, immersive gallery), ingredient/pairing accordions, reviews masonry.
+4.  **Cart (`cart.html`):** Line item management, quantity adjustment, price calculation, shipping summary.
+5.  **Story & Recipes (`about.html`, `recipes.html`):** Static content pages with brand storytelling.
+
+### 4.2 Client-Side Logic
+1.  **Role-Based Access Control (RBAC):** Simulated via `auth.js`. 
+    *   *Admin View:* Sees "Edit" buttons on products, access to `/admin.html`.
+    *   *User View:* Standard shopping experience.
+2.  **Simulated Dashboard:** `admin.html` showing hardcoded stats and charts.
+
+---
+
+## 5. Functional Requirements (Phase 2 - Implementation)
+
+### 5.1 Authentication & User Profiles
+*   **Google OAuth Login:** Replace simulated login with secure Google Sign-In.
+*   **User Registration:** Email/Password fallback.
+*   **User Profile Management:**
+    *   **Saved Addresses:** Users must be able to add/edit Shipping and Billing addresses (Street, City, State, Zip, Country).
+    *   **Order History:** List of past orders with status (Processing, Shipped, Delivered).
+    *   **Wishlist:** Save flavors for later.
+
+### 5.2 Payment Gateway Integration
+*   **Providers:** Integrate Razorpay (primary for India) or Stripe (Global).
+*   **Payment Methods:**
+    *   **UPI:** QR code generation and Intent flow (GPay, PhonePe).
+    *   **Cards:** Credit/Debit (Visa, Mastercard, Amex) with 3DS security.
+    *   **Netbanking/Wallets:** Standard support.
+*   **Checkout Logic:** Secure server-side validation of cart totals before payment initialization.
+
+### 5.3 Admin Dashboard (Backoffice)
+The Admin Dashboard must be the command center for the business.
+
+#### A. Analytics & Reporting (Home Tab)
+*   **Real-time Metrics:** Today's Sales, Active Visitors, Conversion Rate.
+*   **Sales Charts:** Revenue over time (Day/Week/Month).
+*   **Product Performance:** Top-selling SKUs, Low inventory alerts.
+*   **Customer Insights:** Average Order Value (AOV), Returning Customer Rate.
+
+#### B. Order Management (Full Details)
+*   **Order List View:** Filter by Status (Pending, Paid, Unfulfilled, Shipped, Cancelled).
+*   **Order Detail View:**
+    *   **Customer Info:** Name, Email, Phone.
+    *   **Shipping Address:** Full address block with map link.
+    *   **Billing Address:** Verification against payment method.
+    *   **Line Items:** Product, SKU, Quantity, Price, Applied Discounts.
+    *   **Financials:** Subtotal, Tax, Shipping Cost, Total, Payment Gateway Transaction ID.
+    *   **Fulfillment:** Button to "Mark as Shipped" and enter Tracking Number.
+    *   **Actions:** Print Invoice, Refund Order, Send Email Notification.
+
+#### C. Inventory & Products
+*   **CRUD Operations:** Create, Read, Update, Delete products.
+*   **Stock Management:** Set stock levels. Auto-decrement on sale. Prevent ordering out-of-stock items.
+*   **Pricing:** Base price, Sale price (strikethrough).
+
+### 5.4 Promotions & Marketing Engine
+*   **Promotions Page:** A dedicated admin section to manage marketing campaigns.
+*   **Discount Codes:**
+    *   *Types:* Percentage Off (e.g., WELCOME10), Fixed Amount Off ($5 OFF), BOGO (Buy One Get One).
+    *   *Conditions:* Minimum purchase amount, Specific collections only.
+    *   *Scheduling:* Start Date and End Date automation.
+*   **Shop Page Integration:** Banner alerts for active site-wide sales.
+
+---
+
+## 6. Data Models (Schema Draft)
+
+### User
+```json
+{
+  "id": "uuid",
+  "email": "user@example.com",
+  "role": "admin|user",
+  "authProvider": "google|email",
+  "savedAddresses": [
+    {
+      "type": "shipping",
+      "line1": "123 Spice St",
+      "city": "Mumbai",
+      "zip": "400001"
+    }
+  ]
+}
+```
+
+### Order
+```json
+{
+  "id": "ord_123",
+  "userId": "uuid",
+  "status": "processing",
+  "paymentStatus": "paid",
+  "totalAmount": 36.00,
+  "shippingAddress": { ... },
+  "items": [
+    { "productId": "p_1", "quantity": 2, "price": 12.00 }
+  ],
+  "appliedDiscount": "WELCOME10"
+}
+```
+
+---
+
+## 7. Non-Functional Requirements
+1.  **Performance:** Home page load time < 2 seconds. Images optimized via CDNs (WebP format).
+2.  **Security:**
+    *   HTTPS forced.
+    *   Inputs sanitized to prevent XSS.
+    *   Payment data **never** stored on our servers (PCI-DSS compliance handled by Gateway).
+3.  **Scalability:** Database capable of handling 10,000+ concurrent users during drops.
+4.  **Accessibility:** WCAG 2.1 AA compliance (Screen reader support for images and forms).
+
+---
+
+## 8. Success Metrics
+*   **Checkout Conversion Rate:** Target > 3%.
+*   **Admin Efficiency:** Time to fulfill an order < 2 minutes.
+*   **System Uptime:** 99.9%.
+

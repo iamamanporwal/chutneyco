@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shop All Flavors - Chutney Co.</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2200d",
+                        "primary-dark": "#c41607",
+                        "secondary": "#225933",
+                        "accent": "#f5a623",
+                        "background-light": "#FAFAF8",
+                        "background-dark": "#221110",
+                        "card-light": "#ffffff",
+                        "card-dark": "#2d1a19",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "soft": "0 10px 40px -10px rgba(0,0,0,0.08)",
+                        "float": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100 antialiased selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden pb-24">
+<!-- Scrolling Marquee -->
+<div class="bg-secondary text-white py-3 overflow-hidden whitespace-nowrap relative z-30">
+<div class="animate-marquee inline-block">
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER ₹999 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER ₹999 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER ₹999 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER ₹999 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 w-full backdrop-blur-md bg-background-light/80 dark:bg-background-dark/80 border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+<div class="flex items-center justify-between px-6 h-20 max-w-[1600px] mx-auto">
+<div class="flex items-center gap-12">
+<a class="text-2xl font-black tracking-tight text-gray-900 dark:text-white" href="index.html">
+                        Chutney Co.
+                    </a>
+<div class="hidden md:flex items-center gap-8">
+<a href="index.html" class="text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white hover:text-primary transition-colors">Home</a>
+<a href="shop.html" class="text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white border-b-2 border-primary">Shop</a>
+<a href="recipes.html" class="text-sm font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">Recipes</a>
+<a href="about.html" class="text-sm font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">About</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<!-- Auth placeholder handled by auth.js -->
+<div class="group relative">
+<a href="cart.html" class="relative p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-900 dark:text-white transition-colors block">
+<span class="material-symbols-outlined !text-[28px]">shopping_bag</span>
+<span class="absolute top-2 right-2 flex h-2.5 w-2.5">
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+</a>
+<!-- Cart Preview handled dynamically -->
+</div>
+</div>
+</div>
+</nav>
+
+<!-- Page Header -->
+<header class="pt-24 pb-12 px-6 max-w-[1600px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="max-w-3xl">
+<h1 class="text-6xl md:text-8xl font-black tracking-tighter text-gray-900 dark:text-white mb-6 leading-[0.9]">
+                    PICK YOUR <br/><span class="text-primary italic">POISON.</span>
+                </h1>
+<p class="text-xl text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed">
+                    Small batch, big heat. Every jar is crafted to transform your meals from boring to bold.
+                </p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="text-sm font-bold uppercase tracking-wider text-gray-400">Total Flavors</span>
+<span class="text-4xl font-black text-gray-900 dark:text-white" id="total-count">06</span>
+</div>
+</div>
+</header>
+
+<!-- Filters -->
+<section class="px-6 mb-16 sticky top-24 z-40">
+<div class="max-w-[1600px] mx-auto">
+<div class="bg-white/80 dark:bg-card-dark/80 backdrop-blur-md p-2 rounded-full border border-gray-200 dark:border-gray-700 inline-flex shadow-soft" id="filters">
+<button class="px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wide transition-all bg-gray-900 text-white shadow-md filter-btn" data-filter="all">All</button>
+<button class="px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wide text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all hover:bg-gray-100 dark:hover:bg-white/5 filter-btn" data-filter="Best Seller">Best Sellers</button>
+<button class="px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wide text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all hover:bg-gray-100 dark:hover:bg-white/5 filter-btn" data-filter="Mild">Mild</button>
+<button class="px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wide text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all hover:bg-gray-100 dark:hover:bg-white/5 filter-btn" data-filter="Medium">Medium</button>
+<button class="px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wide text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all hover:bg-gray-100 dark:hover:bg-white/5 filter-btn" data-filter="Hot">Hot</button>
+</div>
+</div>
+</section>
+
+<!-- Product Grid -->
+<section class="px-6 pb-24">
+<div class="max-w-[1600px] mx-auto">
+<div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 row-gap-16">
+    <!-- Products rendered via JS -->
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-50 dark:bg-card-dark pt-24 pb-12 px-6">
+<div class="max-w-[1600px] mx-auto">
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24">
+<div class="space-y-6">
+<h2 class="text-3xl font-black text-gray-900 dark:text-white">Chutney Co.</h2>
+<p class="text-gray-500 dark:text-gray-400 max-w-xs">
+                    Making chutney cool again. Small batch, big flavor, zero compromise.
+                </p>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-wider text-sm">Shop</h4>
+<ul class="space-y-4 text-gray-600 dark:text-gray-400">
+<li><a href="shop.html" class="hover:text-primary transition-colors">All Flavors</a></li>
+<li><a href="shop.html" class="hover:text-primary transition-colors">Best Sellers</a></li>
+<li><a href="shop.html" class="hover:text-primary transition-colors">Gift Sets</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-wider text-sm">Company</h4>
+<ul class="space-y-4 text-gray-600 dark:text-gray-400">
+<li><a href="about.html" class="hover:text-primary transition-colors">About Us</a></li>
+<li><a href="recipes.html" class="hover:text-primary transition-colors">Recipes</a></li>
+<li><a href="#" class="hover:text-primary transition-colors">Wholesale</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-wider text-sm">Stay Spicy</h4>
+<p class="text-gray-500 dark:text-gray-400 mb-4 text-sm">Join the Sauce Squad for drops & deals.</p>
+<form class="flex gap-2">
+<input class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark py-3 px-4 focus:ring-primary focus:border-primary" placeholder="Email address" type="email"/>
+<button class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 p-3 rounded-xl hover:opacity-90">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+<p>© 2023 Chutney Co. Crafted with spice.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="hover:text-primary transition-colors" href="#">TikTok</a>
+<a class="hover:text-primary transition-colors" href="#">Twitter</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+<script src="db.js"></script>
+<script src="auth.js"></script>
+<script>
+    // Shop Logic
+    const grid = document.getElementById('product-grid');
+    const filters = document.querySelectorAll('.filter-btn');
+    const countEl = document.getElementById('total-count');
+
+    function renderProducts(filter = 'all') {
+        const products = db.getProducts();
+        const filtered = filter === 'all' 
+            ? products 
+            : products.filter(p => p.tags.includes(filter) || p.spiceLevel === filter);
+        
+        countEl.textContent = filtered.length.toString().padStart(2, '0');
+        
+        grid.innerHTML = filtered.map(product => `
+            <div class="relative group">
+                <button class="admin-only hidden absolute top-4 right-4 z-30 bg-black text-white p-2 rounded-full shadow-lg hover:bg-gray-800 transition-colors" onclick="alert('Edit functionality coming soon')">
+                    <span class="material-symbols-outlined text-sm">edit</span>
+                </button>
+                
+                <a href="product.html?id=${product.id}" class="group block">
+                    <div class="aspect-[4/5] w-full rounded-[2rem] bg-gray-50 dark:bg-card-dark relative overflow-hidden p-8 flex items-center justify-center transition-all duration-500 group-hover:scale-[1.02] shadow-sm group-hover:shadow-float">
+                        <div class="w-full h-full bg-center bg-contain bg-no-repeat drop-shadow-2xl transition-all duration-500 group-hover:scale-110" style='background-image: url("${product.image}");'></div>
+                        <div class="absolute top-6 left-6 bg-white/90 dark:bg-black/50 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase border border-white/20">${product.spiceLevel}</div>
+                        <!-- Quick Add -->
+                        <button onclick="event.preventDefault(); db.addToCart('${product.id}');" class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-gray-900 px-6 py-3 rounded-full font-bold shadow-xl translate-y-20 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 flex items-center gap-2 whitespace-nowrap z-20 hover:bg-gray-50">
+                            <span>Quick Add</span>
+                            <span class="material-symbols-outlined text-sm">add</span>
+                        </button>
+                    </div>
+                    <div class="mt-6 space-y-2">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">${product.name}</h3>
+                            <span class="text-xl font-bold text-gray-900 dark:text-white">₹${product.price.toFixed(2)}</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 line-clamp-2">${product.description}</p>
+                    </div>
+                </a>
+            </div>
+        `).join('');
+        
+        // Re-run admin check since DOM changed
+        auth.showAdminControls();
+    }
+
+    // Filter Click Handlers
+    filters.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class
+            filters.forEach(b => {
+                b.classList.remove('bg-gray-900', 'text-white', 'shadow-md');
+                b.classList.add('text-gray-500', 'hover:bg-gray-100');
+            });
+            // Add active class
+            btn.classList.remove('text-gray-500', 'hover:bg-gray-100');
+            btn.classList.add('bg-gray-900', 'text-white', 'shadow-md');
+            
+            renderProducts(btn.dataset.filter);
+        });
+    });
+
+    // Initial Render
+    renderProducts();
+</script>
+</body></html>

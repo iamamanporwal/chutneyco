@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chutney Co. - Premium Chutney</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2200d", // Chili Red
+                        "primary-dark": "#c41607",
+                        "secondary": "#225933", // Coriander Green
+                        "accent": "#f5a623", // Mustard Yellow
+                        "background-light": "#FAFAF8", // Garlic tint off-white
+                        "background-dark": "#221110",
+                        "card-light": "#ffffff",
+                        "card-dark": "#2d1a19",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "soft": "0 10px 40px -10px rgba(0,0,0,0.08)",
+                        "float": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    },
+                    screens: {
+                        '3xl': '1600px',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    
+    /* Parallax effect utility */
+    .parallax-bg {
+        transform: translateY(var(--scroll-y, 0));
+        transition: transform 0.1s cubic-bezier(0,0,0.2,1);
+        will-change: transform;
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100 antialiased selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden pb-24">
+<!-- Scrolling Marquee -->
+<div class="bg-secondary text-white py-3 overflow-hidden whitespace-nowrap relative z-30">
+<div class="animate-marquee inline-block">
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER ₹999 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER ₹999 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER ₹999 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER ₹999 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 w-full backdrop-blur-md bg-background-light/80 dark:bg-background-dark/80 border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+<div class="flex items-center justify-between px-6 h-20 max-w-[1600px] mx-auto">
+<div class="flex items-center gap-12">
+<a class="text-2xl font-black tracking-tight text-gray-900 dark:text-white" href="index.html">
+                        Chutney Co.
+                    </a>
+<div class="hidden md:flex items-center gap-8">
+<a href="index.html" class="text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white border-b-2 border-primary">Home</a>
+<a href="shop.html" class="text-sm font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">Shop</a>
+<a href="recipes.html" class="text-sm font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">Recipes</a>
+<a href="about.html" class="text-sm font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">About</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<!-- Auth script will inject Login/User menu here -->
+<button class="hidden md:flex text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white hover:text-primary transition-colors">Search</button>
+<div class="group relative">
+<a href="cart.html" class="relative p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-900 dark:text-white transition-colors block">
+<span class="material-symbols-outlined !text-[28px]">shopping_bag</span>
+<span class="absolute top-2 right-2 flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+</a>
+<!-- Cart Preview -->
+<div class="absolute right-0 top-full mt-2 w-80 bg-white dark:bg-card-dark rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right p-6 z-50">
+<div class="flex justify-between items-center mb-4">
+<span class="font-bold text-lg">Your Cart (2)</span>
+<span class="text-primary font-bold">₹900.00</span>
+</div>
+<div class="space-y-4 mb-4 max-h-60 overflow-y-auto">
+<div class="flex gap-3">
+<div class="w-16 h-16 rounded-lg bg-gray-100 bg-center bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAU13zD0jaEpr2ZYdFFUt9yvAPOl0kGLz0jFNO11hYG1N5RopH9l_5P1JAw4g7teQAhHrj0E05LHq9Bga7PD4ym-O-i1tTrLAn7L-QmOD79Igvt_M9U5J7O9ewd4dqVoxgqQiTI1_zLAv3zlHmvij93i9c_nfwC3cEHKjK3ONdwxrEDsBJTkrxvWizS9paX-CglhSp6BC9zkNWV6HQOSvjSZYsE7UqvjqGEt0tNxaMR8Q0Pq0xZ004gUkvHC6BhIgUkzicMzARMe7bH")'></div>
+<div>
+<h4 class="font-bold text-sm">Smoky Tomato</h4>
+<p class="text-xs text-gray-500">Qty: 2</p>
+</div>
+</div>
+</div>
+<a href="cart.html" class="block w-full bg-primary hover:bg-primary-dark text-white text-center font-bold py-3 rounded-xl transition-colors">Checkout</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+
+<!-- Hero Section (Desktop First) -->
+<header class="relative min-h-[90vh] flex items-center overflow-hidden">
+<!-- Background Blobs -->
+<div class="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+
+<div class="max-w-[1600px] mx-auto px-6 w-full grid md:grid-cols-12 gap-12 items-center relative z-10">
+<div class="md:col-span-6 lg:col-span-5 space-y-8 text-center md:text-left pt-12 md:pt-0">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/10 rounded-full border border-gray-100 dark:border-gray-800 shadow-sm animate-fade-in-up">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-bold tracking-widest uppercase">New Batch Dropped</span>
+</div>
+<h1 class="text-6xl md:text-8xl lg:text-[7rem] font-black leading-[0.9] tracking-tighter text-gray-900 dark:text-white">
+                    NOT YOUR <br/>
+<span class="text-primary italic relative">
+                        GRANDMA'S
+                        <svg class="absolute -bottom-2 left-0 w-full text-accent opacity-60" height="10" viewBox="0 0 100 10" width="100%">
+                            <path d="M0 5 Q 50 10 100 5" fill="none" stroke="currentColor" stroke-width="4"></path>
+                        </svg>
+</span> <br/>
+                    CHUTNEY
+                </h1>
+<p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium max-w-lg mx-auto md:mx-0 leading-relaxed">
+                    Small batch, big heat. The condiment your pantry has been missing. Crafted for the modern palate.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+<a href="shop.html" class="bg-primary hover:bg-primary-dark text-white font-bold text-lg py-5 px-10 rounded-2xl shadow-xl shadow-primary/30 transition-all hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3">
+<span>Shop The Heat</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<a href="about.html" class="bg-white dark:bg-card-dark text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 font-bold text-lg py-5 px-10 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-all flex items-center justify-center">
+                        Our Story
+                    </a>
+</div>
+<div class="pt-8 flex items-center justify-center md:justify-start gap-8 text-sm font-bold text-gray-400 uppercase tracking-wider">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">eco</span> Vegan
+                    </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">local_fire_department</span> Small Batch
+                    </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-accent">bolt</span> No Preservatives
+                    </div>
+</div>
+</div>
+<div class="md:col-span-6 lg:col-span-7 relative h-[600px] md:h-[800px] flex items-center justify-center">
+<div class="relative w-full max-w-md md:max-w-xl aspect-[4/5] group cursor-pointer perspective-1000">
+<!-- Floating Elements (Parallax) -->
+<div class="absolute top-20 -left-12 w-24 h-24 bg-red-500/20 rounded-full blur-xl animate-pulse"></div>
+<div class="absolute -bottom-10 right-0 w-32 h-32 bg-yellow-500/20 rounded-full blur-xl animate-pulse delay-700"></div>
+
+<!-- Main Image -->
+<div class="relative z-10 w-full h-full bg-center bg-contain bg-no-repeat transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2 drop-shadow-2xl" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBDzzNrsav-_EMeKq90M23k4ZjriLO4qXBZ0c9Qq_WvegR9UGE7zuErDBCnkslKxySzB3pE2GWDnPhEMqYGngT5nyYpOjU4fv-6YnBYsyComsZzKxvuPvngzTC-VQo3jqPXAuR0SrmQMAKYhSjEKEL2xjShlEwzzAb0BBvs8SkOdhd4chaWeDGLLvHamwq0WhPLjEP3WpHMV9ikIpolm1GvJU6-djyQI5CSWWhZpFBVyG9cFHYwg3lWFwK0RebkBtHS4npv2aVkwujN");'>
+</div>
+
+<!-- Floating Badge -->
+<div class="absolute top-10 right-10 z-20 bg-white dark:bg-card-dark text-primary px-6 py-3 rounded-full shadow-float font-bold text-sm border-2 border-primary rotate-12 group-hover:rotate-0 transition-transform duration-300">
+                        BEST SELLER
+                    </div>
+</div>
+</div>
+</div>
+</header>
+
+<!-- Flavor Collection (Horizontal Scroll) -->
+<section class="py-24 bg-white dark:bg-card-dark rounded-t-[3rem] relative z-20">
+<div class="max-w-[1600px] mx-auto px-6 mb-12 flex justify-between items-end">
+<div>
+<span class="text-accent font-bold tracking-wider text-sm uppercase">Our Collection</span>
+<h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mt-2">Pick Your Poison</h2>
+</div>
+<a href="shop.html" class="group flex items-center gap-2 text-lg font-bold text-gray-500 hover:text-primary transition-colors">
+                View All Flavors 
+                <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+
+<!-- Scroll Container -->
+<div class="flex overflow-x-auto pb-12 px-6 gap-8 snap-x snap-mandatory scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none]">
+<!-- Card 1 -->
+<a href="product.html?flavor=smoky-tomato" class="snap-center shrink-0 w-[350px] md:w-[400px] group relative">
+<div class="aspect-[4/5] w-full rounded-3xl bg-[#FFE4E1] dark:bg-red-900/10 relative overflow-hidden p-8 flex items-center justify-center transition-colors duration-500 group-hover:bg-[#ffdbd6] dark:group-hover:bg-red-900/20">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="w-full h-full bg-center bg-contain bg-no-repeat drop-shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-4" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAU13zD0jaEpr2ZYdFFUt9yvAPOl0kGLz0jFNO11hYG1N5RopH9l_5P1JAw4g7teQAhHrj0E05LHq9Bga7PD4ym-O-i1tTrLAn7L-QmOD79Igvt_M9U5J7O9ewd4dqVoxgqQiTI1_zLAv3zlHmvij93i9c_nfwC3cEHKjK3ONdwxrEDsBJTkrxvWizS9paX-CglhSp6BC9zkNWV6HQOSvjSZYsE7UqvjqGEt0tNxaMR8Q0Pq0xZ004gUkvHC6BhIgUkzicMzARMe7bH");'></div>
+<div class="absolute top-6 left-6 bg-white/90 dark:bg-black/50 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold tracking-widest text-gray-900 dark:text-white uppercase border border-white/20">Mild</div>
+</div>
+<div class="mt-6 space-y-3">
+<div class="flex justify-between items-start">
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">Smoky Tomato</h3>
+<span class="text-xl font-bold text-gray-900 dark:text-white">₹450.00</span>
+</div>
+<p class="text-gray-500 dark:text-gray-400 line-clamp-2 text-lg">Charred tomatoes with a hint of chipotle. Perfect for burgers.</p>
+</div>
+</a>
+
+<!-- Card 2 -->
+<a href="product.html?flavor=zesty-coriander" class="snap-center shrink-0 w-[350px] md:w-[400px] group relative">
+<div class="aspect-[4/5] w-full rounded-3xl bg-[#E8F5E9] dark:bg-green-900/10 relative overflow-hidden p-8 flex items-center justify-center transition-colors duration-500 group-hover:bg-[#dceddd] dark:group-hover:bg-green-900/20">
+<div class="w-full h-full bg-center bg-contain bg-no-repeat drop-shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-4" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdH2jITDM68zf3BX0M1Nfx3k66JGlVoqLwTsyBbSBGEJ5pulZcCHZC58a_Cmt9BfgB00CwXdwSJrd9Wl7BbtnpHLIaNDS9P2tJ2dOwAU6Q69n7IdkVANGbvnu5asiljj8eqZpC9ndx4JHk87EYclqm3iKwe7s5a_cU0gwkAH96kZajJOO8kiWakkgN9o4pdJHsiySOLBe45wWXxkBaBYh61tKPW5XZdEnCDK_r7b0UpgDKCI_fhvwqzqMR3UIwzpqdYhltUA7lV7oo");'></div>
+<div class="absolute top-6 left-6 bg-white/90 dark:bg-black/50 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold tracking-widest text-gray-900 dark:text-white uppercase border border-white/20">Medium</div>
+</div>
+<div class="mt-6 space-y-3">
+<div class="flex justify-between items-start">
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">Zesty Coriander</h3>
+<span class="text-xl font-bold text-gray-900 dark:text-white">₹450.00</span>
+</div>
+<p class="text-gray-500 dark:text-gray-400 line-clamp-2 text-lg">Fresh herbs, green chili, and a splash of lime. The classic rebooted.</p>
+</div>
+</a>
+
+<!-- Card 3 -->
+<a href="product.html?flavor=ghost-pepper-garlic" class="snap-center shrink-0 w-[350px] md:w-[400px] group relative">
+<div class="aspect-[4/5] w-full rounded-3xl bg-[#FFF8E1] dark:bg-yellow-900/10 relative overflow-hidden p-8 flex items-center justify-center transition-colors duration-500 group-hover:bg-[#ffefc2] dark:group-hover:bg-yellow-900/20">
+<div class="w-full h-full bg-center bg-contain bg-no-repeat drop-shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-4" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAEaLQ8EIhnI4ZqRd7MmH13zNcw_FGwDyngGB1JmyG6to-2h3mPOJsptP2c9tQPHJ-crJhE5DgFD_4HStqtSTub4n2od9w4cZKmg4GVmxPe1Woe4rj1Lmy2enQxp2BAX12LMXo3mDoLKUlE3nB6u_0L46zzXKXUn6vxaz8IUhE3e1sjoGRzJ5tp9DDlLsCIH93jQJLfrUgIhemBNtg5cwkksCcEpOzJD-EMlH6715pDgWc9GRpYNbGXJjmqmi-zj4ehaBAX0AJsUb_r");'></div>
+<div class="absolute top-6 left-6 bg-primary text-white px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase shadow-md">Hot AF 🔥</div>
+</div>
+<div class="mt-6 space-y-3">
+<div class="flex justify-between items-start">
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-primary transition-colors">Ghost Pepper Garlic</h3>
+<span class="text-xl font-bold text-gray-900 dark:text-white">₹450.00</span>
+</div>
+<p class="text-gray-500 dark:text-gray-400 line-clamp-2 text-lg">Roasted garlic meets the legendary ghost pepper. Not for the weak.</p>
+</div>
+</a>
+<div class="w-12 shrink-0"></div>
+</div>
+</section>
+
+<!-- Features Grid (Editorial) -->
+<section class="py-24 px-6 max-w-[1600px] mx-auto w-full">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div class="space-y-6">
+<h2 class="text-5xl md:text-6xl font-black text-gray-900 dark:text-white tracking-tighter leading-none">THE REAL <br/><span class="text-primary">DEAL.</span></h2>
+<p class="text-xl text-gray-500 dark:text-gray-400 max-w-md leading-relaxed">
+                We believe in condiments that stand out. No fillers, no fake stuff. Just bold flavors that demand attention.
+            </p>
+<a href="about.html" class="inline-block text-lg font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors">Read Our Manifesto</a>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<!-- Feature 1 -->
+<div class="bg-white dark:bg-card-dark p-8 rounded-3xl border border-gray-100 dark:border-gray-800 flex flex-col items-start gap-4 shadow-soft hover:shadow-float transition-all duration-300 group">
+<div class="w-14 h-14 rounded-2xl bg-red-50 dark:bg-red-900/30 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">no_food</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white">0% Preservatives</h3>
+</div>
+<!-- Feature 2 -->
+<div class="bg-white dark:bg-card-dark p-8 rounded-3xl border border-gray-100 dark:border-gray-800 flex flex-col items-start gap-4 shadow-soft hover:shadow-float transition-all duration-300 group mt-12">
+<div class="w-14 h-14 rounded-2xl bg-green-50 dark:bg-green-900/30 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">agriculture</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white">Farm Fresh</h3>
+</div>
+<!-- Feature 3 -->
+<div class="bg-white dark:bg-card-dark p-8 rounded-3xl border border-gray-100 dark:border-gray-800 flex flex-col items-start gap-4 shadow-soft hover:shadow-float transition-all duration-300 group">
+<div class="w-14 h-14 rounded-2xl bg-yellow-50 dark:bg-yellow-900/30 text-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">spa</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white">Vegan Friendly</h3>
+</div>
+<!-- Feature 4 -->
+<div class="bg-white dark:bg-card-dark p-8 rounded-3xl border border-gray-100 dark:border-gray-800 flex flex-col items-start gap-4 shadow-soft hover:shadow-float transition-all duration-300 group mt-12">
+<div class="w-14 h-14 rounded-2xl bg-orange-50 dark:bg-orange-900/30 text-orange-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">all_inclusive</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white">Small Batch</h3>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Social Proof (Editorial) -->
+<section class="py-32 bg-primary text-white relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+<div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+<div class="flex justify-center gap-2 text-accent mb-8">
+<span class="material-symbols-outlined fill-current text-3xl" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined fill-current text-3xl" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined fill-current text-3xl" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined fill-current text-3xl" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined fill-current text-3xl" style="font-variation-settings: 'FILL' 1">star</span>
+</div>
+<h3 class="text-4xl md:text-6xl font-black leading-tight mb-8 tracking-tight">
+            "I literally put this on everything. My eggs, my toast, my pizza. It's addictive."
+        </h3>
+<div class="flex items-center justify-center gap-4">
+<div class="w-12 h-12 rounded-full bg-white/20"></div>
+<div class="text-left">
+<p class="font-bold text-xl">Sarah J.</p>
+<p class="opacity-80 text-sm uppercase tracking-wide">Verified Spicy Human</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Recipes (Editorial Grid) -->
+<section class="py-24 px-6 bg-background-light dark:bg-background-dark">
+<div class="max-w-[1600px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div>
+<span class="text-primary font-bold tracking-wider text-sm uppercase">Get Inspired</span>
+<h2 class="text-5xl font-black text-gray-900 dark:text-white mt-2">Pair It Perfectly</h2>
+</div>
+<p class="text-xl text-gray-500 dark:text-gray-400 max-w-lg text-right">
+            Unlock new flavors with our curated pairings. It's more than just a dip—it's a lifestyle.
+        </p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Big Featured Recipe -->
+<a href="recipes.html" class="group relative rounded-[2rem] overflow-hidden aspect-[4/3] md:col-span-2 lg:col-span-1 lg:row-span-2">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBif4afmT195vSG6MSM3-CcQVyJKj8jhc-Kjs1zXzLoMEew9qA9SjSCc8OQjkejx2IE-u9b1H8XRrNA5pfjbZGkNSdZnoqYZ4VLvTYjeIOyTEY3LIBkU8--0lIUphvaP7JOAU80fAYAs_1JGp8izq6sjGMAxV5DR19nGs3THeW5qbkaWcUueYM_VjKvyJ_KrMpwAJGLSLWBdSBdodEXsvx0sVmpzZyymC2OsGt5IqCQ57PAqotBJ9DTYP6ssSWKzBG20HuVxwLRzoDl");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 md:p-12">
+<span class="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded-full mb-4 uppercase tracking-wide">Try With Tomato</span>
+<h3 class="text-3xl md:text-5xl font-bold text-white mb-2">The Ultimate Grilled Cheese</h3>
+<p class="text-white/80 text-lg max-w-md">Elevate your lunch game with smoky tomato chutney.</p>
+</div>
+</a>
+
+<!-- Recipe 2 -->
+<a href="recipes.html" class="group relative rounded-[2rem] overflow-hidden aspect-video">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_ev__NNzyamnksQoJ6LggAWn-lU_tSiNPszm9TY7jzZcNlimzpupnuxfQgLkijHF4PrV6Ppf4E2m8iv3dwIuto-nzAes6JMd33iIhUu5trGe_q14fTQbtWt6USUVDfynsqVOf70I-_qg0BglI_V6MAYNWBRxFqESr5iO5Csw49woSbVMRKx9LLEbPiMyoMdBB2z6LOv5b2mgYZJVejFXjd-Z0NcTmvdvyqTWGv5As3rPFFFfpaxeXczfUSLfqSDFXQYED75-adcJ3");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<span class="inline-block px-3 py-1 bg-secondary text-white text-xs font-bold rounded-full mb-3 uppercase tracking-wide">Try With Coriander</span>
+<h3 class="text-2xl font-bold text-white">Classic Samosa Dipping</h3>
+</div>
+</a>
+
+<!-- Recipe 3 -->
+<a href="recipes.html" class="group relative rounded-[2rem] overflow-hidden aspect-video">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFpmigUMRJtH-FZHIc4Y_GtEbrrFMlccQQQdgK1M2zsghNchnL16zdq2l_WifkMMnlbNNDa7eYAuCvi0mZE_3jUsQGPYrcxcUqagrNauNRs4sk40_qYUOEDFFXPo7QQ05_RHa_vPDZPzNp3vqfvLvaIu4MTzgFmul2RevQlVFyUGc_5sNUHrIMuwGL3lAL4SmgF4pVcVicBQW_Gd9tQ45R9J5M6sbvVJiRibJAPDPVMRyHUYeuZJhqmdFEqpzLAiJXJcvb72XZxeAj");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<span class="inline-block px-3 py-1 bg-orange-600 text-white text-xs font-bold rounded-full mb-3 uppercase tracking-wide">Try With Garlic</span>
+<h3 class="text-2xl font-bold text-white">Charcuterie Upgrade</h3>
+</div>
+</a>
+</div>
+</div>
+</section>
+
+<!-- Footer (Expanded) -->
+<footer class="bg-gray-50 dark:bg-card-dark pt-24 pb-12 px-6">
+<div class="max-w-[1600px] mx-auto">
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24">
+<div class="space-y-6">
+<h2 class="text-3xl font-black text-gray-900 dark:text-white">Chutney Co.</h2>
+<p class="text-gray-500 dark:text-gray-400 max-w-xs">
+                    Making chutney cool again. Small batch, big flavor, zero compromise.
+                </p>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-wider text-sm">Shop</h4>
+<ul class="space-y-4 text-gray-600 dark:text-gray-400">
+<li><a href="shop.html" class="hover:text-primary transition-colors">All Flavors</a></li>
+<li><a href="shop.html" class="hover:text-primary transition-colors">Best Sellers</a></li>
+<li><a href="shop.html" class="hover:text-primary transition-colors">Gift Sets</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-wider text-sm">Company</h4>
+<ul class="space-y-4 text-gray-600 dark:text-gray-400">
+<li><a href="about.html" class="hover:text-primary transition-colors">About Us</a></li>
+<li><a href="recipes.html" class="hover:text-primary transition-colors">Recipes</a></li>
+<li><a href="#" class="hover:text-primary transition-colors">Wholesale</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-wider text-sm">Stay Spicy</h4>
+<p class="text-gray-500 dark:text-gray-400 mb-4 text-sm">Join the Sauce Squad for drops & deals.</p>
+<form class="flex gap-2">
+<input class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark py-3 px-4 focus:ring-primary focus:border-primary" placeholder="Email address" type="email"/>
+<button class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 p-3 rounded-xl hover:opacity-90">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+<p>© 2023 Chutney Co. Crafted with spice.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="hover:text-primary transition-colors" href="#">TikTok</a>
+<a class="hover:text-primary transition-colors" href="#">Twitter</a>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Floating Action Button (Mobile Only) -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-full max-w-xs px-4 md:hidden">
+<a href="shop.html" class="w-full bg-primary hover:bg-primary-dark text-white font-bold text-lg py-4 px-6 rounded-full shadow-float flex items-center justify-between transition-transform active:scale-95 group">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined group-hover:animate-spin">local_mall</span>
+                Shop All
+            </span>
+<span>₹0.00</span>
+</a>
+</div>
+</div>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+<script>
+        // Simple Parallax Effect
+        document.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            document.body.style.setProperty('--scroll-y', `${scrolled * 0.5}px`);
+        });
+    </script>
+    <script src="db.js"></script>
+    <script src="auth.js"></script>
+</body></html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Admin Dashboard - Chutney Co.</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2200d",
+                        "primary-dark": "#c41607",
+                        "secondary": "#225933",
+                        "accent": "#f5a623",
+                        "background-light": "#FAFAF8",
+                        "background-dark": "#221110",
+                        "card-light": "#ffffff",
+                        "card-dark": "#2d1a19",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100 antialiased flex h-screen overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white dark:bg-card-dark border-r border-gray-200 dark:border-gray-800 flex-col hidden md:flex">
+        <div class="p-6">
+            <a href="index.html" class="text-2xl font-black tracking-tight">Chutney Co.</a>
+            <span class="text-xs font-bold uppercase text-primary tracking-widest block mt-1">Admin Panel</span>
+        </div>
+        <nav class="flex-1 px-4 space-y-2">
+            <button onclick="renderView('dashboard')" class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl font-medium transition-colors text-left" id="nav-dashboard">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </button>
+            <button onclick="renderView('products')" class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl font-medium transition-colors text-left" id="nav-products">
+                <span class="material-symbols-outlined">inventory_2</span>
+                Products
+            </button>
+            <button onclick="renderView('orders')" class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl font-medium transition-colors text-left" id="nav-orders">
+                <span class="material-symbols-outlined">shopping_cart</span>
+                Orders
+            </button>
+            <button onclick="renderView('promotions')" class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl font-medium transition-colors text-left" id="nav-promotions">
+                <span class="material-symbols-outlined">local_offer</span>
+                Promotions
+            </button>
+        </nav>
+        <div class="p-4 border-t border-gray-200 dark:border-gray-800">
+            <button onclick="auth.logout()" class="flex items-center gap-3 px-4 py-3 w-full text-left text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl transition-colors font-bold">
+                <span class="material-symbols-outlined">logout</span>
+                Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto relative">
+        <header class="h-20 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-8 bg-white/80 dark:bg-card-dark/80 backdrop-blur-md sticky top-0 z-10">
+            <h1 class="text-xl font-bold" id="page-title">Dashboard Overview</h1>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="flex items-center gap-2 text-sm font-bold hover:text-primary transition-colors">
+                    View Site <span class="material-symbols-outlined text-sm">open_in_new</span>
+                </a>
+            </div>
+        </header>
+
+        <div class="p-8 max-w-6xl mx-auto space-y-8" id="content-area">
+            <!-- Dynamic Content Load Here -->
+        </div>
+    </main>
+
+    <!-- Product Modal (Hidden) -->
+    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal('product-modal')"></div>
+        <div class="bg-white dark:bg-card-dark w-full max-w-2xl p-8 rounded-3xl relative z-10">
+            <h3 class="text-2xl font-bold mb-6">Edit Product</h3>
+            <form id="product-form" class="space-y-4">
+                <input type="hidden" id="prod-id">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="col-span-2">
+                        <label class="block text-sm font-bold mb-1">Product Name</label>
+                        <input type="text" id="prod-name" class="w-full rounded-xl border-gray-200 p-3">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-1">Price</label>
+                        <input type="number" id="prod-price" class="w-full rounded-xl border-gray-200 p-3">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-1">Stock</label>
+                        <input type="number" id="prod-stock" class="w-full rounded-xl border-gray-200 p-3">
+                    </div>
+                    <div class="col-span-2">
+                        <label class="block text-sm font-bold mb-1">Image URL</label>
+                        <input type="text" id="prod-image" class="w-full rounded-xl border-gray-200 p-3">
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" onclick="closeModal('product-modal')" class="px-6 py-3 rounded-xl font-bold text-gray-500 hover:bg-gray-100">Cancel</button>
+                    <button type="submit" class="px-6 py-3 rounded-xl font-bold bg-primary text-white hover:bg-primary-dark">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="db.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Check Admin
+        auth.requireAdmin();
+
+        // Router
+        function renderView(view) {
+            // Update Active Nav
+            document.querySelectorAll('nav button').forEach(b => {
+                b.classList.remove('bg-primary/10', 'text-primary');
+                b.classList.add('text-gray-600');
+            });
+            const activeBtn = document.getElementById(`nav-${view}`);
+            if(activeBtn) {
+                activeBtn.classList.add('bg-primary/10', 'text-primary');
+                activeBtn.classList.remove('text-gray-600');
+            }
+
+            const content = document.getElementById('content-area');
+            const title = document.getElementById('page-title');
+
+            if (view === 'dashboard') {
+                title.innerText = 'Dashboard Overview';
+                renderDashboard(content);
+            } else if (view === 'products') {
+                title.innerText = 'Product Management';
+                renderProducts(content);
+            } else if (view === 'orders') {
+                title.innerText = 'Order Management';
+                renderOrders(content);
+            } else if (view === 'promotions') {
+                title.innerText = 'Promotions';
+                renderPromotions(content);
+            }
+        }
+
+        // --- Views ---
+
+        function renderDashboard(container) {
+            const orders = db.getOrders();
+            const totalRevenue = orders.reduce((sum, o) => sum + o.total, 0);
+            const pendingOrders = orders.filter(o => o.status === 'Processing').length;
+            
+            // Get Top Product
+            const productSales = {};
+            orders.forEach(o => {
+                o.items.forEach(i => {
+                    productSales[i.name] = (productSales[i.name] || 0) + i.quantity;
+                });
+            });
+            const topProduct = Object.keys(productSales).reduce((a, b) => productSales[a] > productSales[b] ? a : b, 'None');
+
+            container.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-card-dark p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-green-50 text-green-600 rounded-xl"><span class="material-symbols-outlined">payments</span></div>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Total Revenue</p>
+                        <h3 class="text-3xl font-black">$${totalRevenue.toFixed(2)}</h3>
+                    </div>
+                    <div class="bg-white dark:bg-card-dark p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-blue-50 text-blue-600 rounded-xl"><span class="material-symbols-outlined">shopping_bag</span></div>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Processing Orders</p>
+                        <h3 class="text-3xl font-black">${pendingOrders}</h3>
+                    </div>
+                    <div class="bg-white dark:bg-card-dark p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-3 bg-primary/10 text-primary rounded-xl"><span class="material-symbols-outlined">local_fire_department</span></div>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Top Selling</p>
+                        <h3 class="text-2xl font-black truncate">${topProduct}</h3>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProducts(container) {
+            const products = db.getProducts();
+            container.innerHTML = `
+                <div class="bg-white dark:bg-card-dark rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden">
+                    <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                        <h3 class="font-bold text-lg">Inventory</h3>
+                        <button onclick="openProductModal()" class="bg-primary text-white px-4 py-2 rounded-lg font-bold text-sm">+ Add Product</button>
+                    </div>
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4">Product</th>
+                                <th class="px-6 py-4">Price</th>
+                                <th class="px-6 py-4">Stock</th>
+                                <th class="px-6 py-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            ${products.map(p => `
+                                <tr>
+                                    <td class="px-6 py-4 font-bold flex items-center gap-3">
+                                        <img src="${p.image}" class="w-10 h-10 rounded-lg object-cover bg-gray-100">
+                                        ${p.name}
+                                    </td>
+                                    <td class="px-6 py-4">$${p.price}</td>
+                                    <td class="px-6 py-4">
+                                        <span class="${p.stock < 20 ? 'text-red-500 font-bold' : ''}">${p.stock}</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <button onclick="openProductModal('${p.id}')" class="text-blue-600 hover:underline mr-3">Edit</button>
+                                        <button onclick="deleteProduct('${p.id}')" class="text-red-600 hover:underline">Delete</button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function renderOrders(container) {
+            const orders = db.getOrders();
+            container.innerHTML = `
+                <div class="bg-white dark:bg-card-dark rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4">Order ID</th>
+                                <th class="px-6 py-4">Customer</th>
+                                <th class="px-6 py-4">Items</th>
+                                <th class="px-6 py-4">Total</th>
+                                <th class="px-6 py-4">Status</th>
+                                <th class="px-6 py-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            ${orders.map(o => `
+                                <tr>
+                                    <td class="px-6 py-4 font-mono font-bold text-primary">${o.id}</td>
+                                    <td class="px-6 py-4">
+                                        <div class="font-bold">${o.customer.name || o.customer.username}</div>
+                                        <div class="text-xs text-gray-400">${o.customer.email}</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-xs">
+                                        ${o.items.map(i => `<div>${i.quantity}x ${i.name || 'Item'}</div>`).join('')}
+                                    </td>
+                                    <td class="px-6 py-4 font-bold">$${o.total.toFixed(2)}</td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-3 py-1 rounded-full text-xs font-bold 
+                                            ${o.status === 'Delivered' ? 'bg-green-100 text-green-700' : 
+                                              o.status === 'Processing' ? 'bg-blue-100 text-blue-700' : 'bg-gray-100'}">
+                                            ${o.status}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <select onchange="updateStatus('${o.id}', this.value)" class="text-xs border-gray-200 rounded-lg py-1 pr-8">
+                                            <option value="Processing" ${o.status==='Processing'?'selected':''}>Processing</option>
+                                            <option value="Shipped" ${o.status==='Shipped'?'selected':''}>Shipped</option>
+                                            <option value="Delivered" ${o.status==='Delivered'?'selected':''}>Delivered</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function renderPromotions(container) {
+            const promos = db.getPromotions();
+            container.innerHTML = `
+                <div class="bg-white dark:bg-card-dark rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden">
+                    <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                        <h3 class="font-bold text-lg">Active Promotions</h3>
+                        <button onclick="addPromo()" class="bg-primary text-white px-4 py-2 rounded-lg font-bold text-sm">+ New Code</button>
+                    </div>
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4">Code</th>
+                                <th class="px-6 py-4">Type</th>
+                                <th class="px-6 py-4">Value</th>
+                                <th class="px-6 py-4">Min Order</th>
+                                <th class="px-6 py-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            ${promos.map(p => `
+                                <tr>
+                                    <td class="px-6 py-4 font-mono font-bold text-secondary">${p.code}</td>
+                                    <td class="px-6 py-4 uppercase text-xs font-bold">${p.type}</td>
+                                    <td class="px-6 py-4 font-bold">${p.value}</td>
+                                    <td class="px-6 py-4">$${p.minOrder}</td>
+                                    <td class="px-6 py-4">
+                                        <button onclick="deletePromo('${p.code}')" class="text-red-600 hover:underline">Delete</button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        // --- Action Handlers ---
+
+        function deleteProduct(id) {
+            if(confirm('Are you sure?')) {
+                db.deleteProduct(id);
+                renderView('products');
+            }
+        }
+
+        function updateStatus(id, status) {
+            db.updateOrderStatus(id, status);
+            // No re-render needed, just visual feedback if complex
+        }
+
+        function deletePromo(code) {
+            db.deletePromotion(code);
+            renderView('promotions');
+        }
+
+        function addPromo() {
+            const code = prompt("Enter Code (e.g. SUMMER20):");
+            if(code) {
+                db.savePromotion({
+                    code, type: 'percent', value: 10, minOrder: 0, active: true
+                });
+                renderView('promotions');
+            }
+        }
+
+        // --- Modal Logic ---
+        function openProductModal(id) {
+            const modal = document.getElementById('product-modal');
+            modal.classList.remove('hidden');
+            const product = id ? db.getProduct(id) : null;
+            
+            document.getElementById('prod-id').value = product ? product.id : '';
+            document.getElementById('prod-name').value = product ? product.name : '';
+            document.getElementById('prod-price').value = product ? product.price : '';
+            document.getElementById('prod-stock').value = product ? product.stock : '';
+            document.getElementById('prod-image').value = product ? product.image : '';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        document.getElementById('product-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const id = document.getElementById('prod-id').value;
+            const name = document.getElementById('prod-name').value;
+            const price = parseFloat(document.getElementById('prod-price').value);
+            const stock = parseInt(document.getElementById('prod-stock').value);
+            const image = document.getElementById('prod-image').value;
+
+            const product = {
+                id: id || ('p' + Date.now()),
+                name, price, stock, image,
+                tags: [], spiceLevel: 'Medium', description: 'New Product' // Defaults
+            };
+            
+            db.saveProduct(product);
+            closeModal('product-modal');
+            renderView('products');
+        });
+
+        // Init
+        renderView('dashboard');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product Details - Chutney Co.</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2200d",
+                        "primary-dark": "#c41607",
+                        "secondary": "#225933",
+                        "accent": "#f5a623",
+                        "background-light": "#FAFAF8",
+                        "background-dark": "#221110",
+                        "card-light": "#ffffff",
+                        "card-dark": "#2d1a19",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "soft": "0 10px 40px -10px rgba(0,0,0,0.08)",
+                        "float": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100 antialiased selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden pb-24">
+<!-- Scrolling Marquee -->
+<div class="bg-secondary text-white py-3 overflow-hidden whitespace-nowrap relative z-30">
+<div class="animate-marquee inline-block">
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER ₹999 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER ₹999 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER ₹999 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER ₹999 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 w-full backdrop-blur-md bg-background-light/80 dark:bg-background-dark/80 border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+<div class="flex items-center justify-between px-6 h-20 max-w-[1600px] mx-auto">
+<div class="flex items-center gap-12">
+<a class="text-2xl font-black tracking-tight text-gray-900 dark:text-white" href="index.html">
+                        Chutney Co.
+                    </a>
+<div class="hidden md:flex items-center gap-8">
+<a href="index.html" class="text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white hover:text-primary transition-colors">Home</a>
+<a href="shop.html" class="text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white border-b-2 border-primary">Shop</a>
+<a href="recipes.html" class="text-sm font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">Recipes</a>
+<a href="about.html" class="text-sm font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">About</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="group relative">
+<a href="cart.html" class="relative p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-900 dark:text-white transition-colors block">
+<span class="material-symbols-outlined !text-[28px]">shopping_bag</span>
+<span class="absolute top-2 right-2 flex h-2.5 w-2.5">
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+</a>
+</div>
+</div>
+</div>
+</nav>
+
+<!-- Main Product Section -->
+<section class="pt-8 md:pt-16 pb-24 px-6 max-w-[1600px] mx-auto">
+<div class="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start" id="product-container">
+    <!-- Dynamic Content -->
+    <div class="col-span-12 text-center py-20">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+    </div>
+</div>
+</section>
+
+<!-- Reviews (Masonry) -->
+<section class="py-24 bg-white dark:bg-card-dark px-6">
+<div class="max-w-[1600px] mx-auto">
+<h2 class="text-4xl font-black text-gray-900 dark:text-white mb-12">The People Have Spoken</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Reviews are static for now, dynamic in Phase 3 -->
+<div class="bg-background-light dark:bg-background-dark p-8 rounded-3xl">
+    <div class="flex gap-1 text-accent mb-4">
+        <span class="material-symbols-outlined fill-current">star</span><span class="material-symbols-outlined fill-current">star</span><span class="material-symbols-outlined fill-current">star</span><span class="material-symbols-outlined fill-current">star</span><span class="material-symbols-outlined fill-current">star</span>
+    </div>
+    <h3 class="text-xl font-bold mb-4">"Addictive is an understatement"</h3>
+    <p class="text-gray-600 dark:text-gray-400 mb-6">I bought one jar to try and ended up buying 6 more for gifts.</p>
+    <div class="text-sm font-bold">Sarah J.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-50 dark:bg-card-dark pt-24 pb-12 px-6">
+<div class="max-w-[1600px] mx-auto">
+<p class="text-center text-sm text-gray-400">© 2023 Chutney Co. Crafted with spice.</p>
+</div>
+</footer>
+</div>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+<script src="db.js"></script>
+<script src="auth.js"></script>
+<script>
+    // Parse URL params
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('id') || 'p1'; // Default to first product if none
+    const flavor = params.get('flavor');
+
+    // Handle legacy flavor links
+    const flavorMap = {
+        'smoky-tomato': 'p1',
+        'zesty-coriander': 'p2',
+        'ghost-pepper-garlic': 'p3',
+        'mango-ginger': 'p4',
+        'tamarind-date': 'p5',
+        'red-chili': 'p6'
+    };
+    
+    const activeId = flavor ? flavorMap[flavor] : productId;
+    const product = db.getProduct(activeId);
+
+    if (product) {
+        document.title = `${product.name} - Chutney Co.`;
+        
+        const container = document.getElementById('product-container');
+        container.innerHTML = `
+            <!-- Left Column: Immersive Gallery -->
+            <div class="lg:col-span-7 space-y-6">
+                <!-- Main Hero Image -->
+                <div class="aspect-square w-full rounded-[2.5rem] bg-[#FAFAF8] dark:bg-red-900/10 relative overflow-hidden flex items-center justify-center group cursor-zoom-in">
+                    <div class="w-full h-full bg-center bg-contain bg-no-repeat transition-transform duration-700 group-hover:scale-110" style='background-image: url("${product.image}");'></div>
+                    <div class="absolute top-8 left-8 bg-white/90 dark:bg-black/50 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase border border-white/20">${product.tags[0] || 'Premium'}</div>
+                </div>
+            </div>
+
+            <!-- Right Column: Sticky Details -->
+            <div class="lg:col-span-5 lg:sticky lg:top-32 space-y-8">
+                <!-- Header -->
+                <div class="relative">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider rounded-full">Small Batch</span>
+                        <div class="flex items-center gap-1 text-accent">
+                            <span class="material-symbols-outlined text-sm fill-current">star</span>
+                            <span class="text-sm font-bold text-gray-900 dark:text-white ml-1">4.9/5</span>
+                        </div>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-black tracking-tighter text-gray-900 dark:text-white mb-4 leading-none">${product.name}</h1>
+                    <p class="text-2xl text-gray-500 dark:text-gray-400 font-medium">₹${product.price.toFixed(2)}</p>
+                    
+                    <!-- Admin Edit Button -->
+                    <button class="admin-only hidden absolute top-0 right-0 bg-black text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-gray-800 transition-colors flex items-center gap-2" onclick="alert('Edit ${product.name}')">
+                        <span class="material-symbols-outlined text-sm">edit</span>
+                        Edit
+                    </button>
+                </div>
+
+                <!-- Description -->
+                <div class="prose prose-lg dark:prose-invert">
+                    <p>${product.description}</p>
+                </div>
+
+                <!-- Spice Level -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-white mb-3">Heat Level</h4>
+                    <div class="flex items-center gap-2">
+                        <div class="h-2 w-12 rounded-full bg-primary"></div>
+                        <div class="h-2 w-12 rounded-full ${product.spiceLevel === 'Hot' ? 'bg-primary' : 'bg-gray-200 dark:bg-gray-800'}"></div>
+                        <div class="h-2 w-12 rounded-full ${product.spiceLevel === 'Hot' ? 'bg-primary' : 'bg-gray-200 dark:bg-gray-800'}"></div>
+                        <span class="ml-3 text-sm font-bold text-primary">${product.spiceLevel}</span>
+                    </div>
+                </div>
+
+                <!-- Add to Cart -->
+                <div class="pt-6 border-t border-gray-100 dark:border-gray-800 space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden h-14">
+                            <button class="px-5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors h-full text-xl" onclick="updateQty(-1)">−</button>
+                            <input type="number" id="qty" value="1" min="1" class="w-16 text-center border-0 bg-transparent font-bold focus:ring-0 h-full"/>
+                            <button class="px-5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors h-full text-xl" onclick="updateQty(1)">+</button>
+                        </div>
+                        <button onclick="addToCart('${product.id}')" class="flex-1 bg-primary hover:bg-primary-dark text-white font-bold text-lg h-14 rounded-2xl shadow-xl shadow-primary/30 transition-all hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2">
+                            <span>Add to Cart</span>
+                            <span class="material-symbols-outlined">shopping_cart</span>
+                        </button>
+                    </div>
+                    <p class="text-xs text-center text-gray-500">Free shipping on orders over ₹999. 100% Satisfaction Guaranteed.</p>
+                </div>
+            </div>
+        `;
+        auth.showAdminControls();
+    } else {
+        document.getElementById('product-container').innerHTML = '<div class="col-span-12 text-center py-20 text-xl font-bold">Product not found.</div>';
+    }
+
+    function updateQty(change) {
+        const input = document.getElementById('qty');
+        let val = parseInt(input.value) + change;
+        if (val < 1) val = 1;
+        input.value = val;
+    }
+
+    function addToCart(id) {
+        const qty = parseInt(document.getElementById('qty').value);
+        db.addToCart(id, qty);
+        
+        // Simple visual feedback
+        const btn = document.querySelector('button[onclick^="addToCart"]');
+        const original = btn.innerHTML;
+        btn.innerHTML = `<span class="material-symbols-outlined animate-spin">refresh</span> Adding...`;
+        setTimeout(() => {
+            btn.innerHTML = `<span class="material-symbols-outlined">check</span> Added`;
+            setTimeout(() => {
+                btn.innerHTML = original;
+            }, 1000);
+        }, 500);
+    }
+</script>
+</body></html>

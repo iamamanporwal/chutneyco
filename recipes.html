@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recipes & Pairings - Chutney Co.</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2200d",
+                        "primary-dark": "#c41607",
+                        "secondary": "#225933",
+                        "accent": "#f5a623",
+                        "background-light": "#FAFAF8",
+                        "background-dark": "#221110",
+                        "card-light": "#ffffff",
+                        "card-dark": "#2d1a19",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "soft": "0 10px 40px -10px rgba(0,0,0,0.08)",
+                        "float": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100 antialiased selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden pb-24">
+<!-- Scrolling Marquee -->
+<div class="bg-secondary text-white py-3 overflow-hidden whitespace-nowrap relative z-30">
+<div class="animate-marquee inline-block">
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER $45 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER $45 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER $45 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+<span class="mx-6 text-sm font-bold uppercase tracking-[0.2em]">FREE SHIPPING ON ORDERS OVER $45 • SPICE UP YOUR SLICE • 100% VEGAN •</span>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 w-full backdrop-blur-md bg-background-light/80 dark:bg-background-dark/80 border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+<div class="flex items-center justify-between px-6 h-20 max-w-[1600px] mx-auto">
+<div class="flex items-center gap-12">
+<a class="text-2xl font-black tracking-tight text-gray-900 dark:text-white" href="index.html">
+                        Chutney Co.
+                    </a>
+<div class="hidden md:flex items-center gap-8">
+<a href="index.html" class="text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white hover:text-primary transition-colors">Home</a>
+<a href="shop.html" class="text-sm font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">Shop</a>
+<a href="recipes.html" class="text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white border-b-2 border-primary">Recipes</a>
+<a href="about.html" class="text-sm font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">About</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white hover:text-primary transition-colors">Search</button>
+<div class="group relative">
+<a href="cart.html" class="relative p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-900 dark:text-white transition-colors block">
+<span class="material-symbols-outlined !text-[28px]">shopping_bag</span>
+<span class="absolute top-2 right-2 flex h-2.5 w-2.5">
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+</a>
+<!-- Cart Preview -->
+<div class="absolute right-0 top-full mt-2 w-80 bg-white dark:bg-card-dark rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right p-6 z-50">
+<div class="flex justify-between items-center mb-4">
+<span class="font-bold text-lg">Your Cart (2)</span>
+<span class="text-primary font-bold">$36.00</span>
+</div>
+<div class="space-y-4 mb-4 max-h-60 overflow-y-auto">
+<div class="flex gap-3">
+<div class="w-16 h-16 rounded-lg bg-gray-100 bg-center bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAU13zD0jaEpr2ZYdFFUt9yvAPOl0kGLz0jFNO11hYG1N5RopH9l_5P1JAw4g7teQAhHrj0E05LHq9Bga7PD4ym-O-i1tTrLAn7L-QmOD79Igvt_M9U5J7O9ewd4dqVoxgqQiTI1_zLAv3zlHmvij93i9c_nfwC3cEHKjK3ONdwxrEDsBJTkrxvWizS9paX-CglhSp6BC9zkNWV6HQOSvjSZYsE7UqvjqGEt0tNxaMR8Q0Pq0xZ004gUkvHC6BhIgUkzicMzARMe7bH")'></div>
+<div>
+<h4 class="font-bold text-sm">Smoky Tomato</h4>
+<p class="text-xs text-gray-500">Qty: 2</p>
+</div>
+</div>
+</div>
+<a href="cart.html" class="block w-full bg-primary hover:bg-primary-dark text-white text-center font-bold py-3 rounded-xl transition-colors">Checkout</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+
+<!-- Page Header -->
+<section class="px-6 pt-24 pb-12">
+<div class="max-w-[1600px] mx-auto text-center">
+<h1 class="text-6xl md:text-8xl font-black tracking-tighter text-gray-900 dark:text-white mb-6">PAIR IT <span class="text-primary">PERFECTLY.</span></h1>
+<p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">Unlock new flavors with our curated pairings. It's more than just a dip—it's a flavor upgrade.</p>
+</div>
+</section>
+
+<!-- Recipe Grid (Desktop Editorial) -->
+<section class="px-6 py-12 pb-24">
+<div class="max-w-[1600px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Recipe 1 -->
+<div class="group relative rounded-[2rem] overflow-hidden aspect-square cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBif4afmT195vSG6MSM3-CcQVyJKj8jhc-Kjs1zXzLoMEew9qA9SjSCc8OQjkejx2IE-u9b1H8XRrNA5pfjbZGkNSdZnoqYZ4VLvTYjeIOyTEY3LIBkU8--0lIUphvaP7JOAU80fAYAs_1JGp8izq6sjGMAxV5DR19nGs3THeW5qbkaWcUueYM_VjKvyJ_KrMpwAJGLSLWBdSBdodEXsvx0sVmpzZyymC2OsGt5IqCQ57PAqotBJ9DTYP6ssSWKzBG20HuVxwLRzoDl");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-8">
+<span class="inline-block px-4 py-2 bg-primary text-white text-xs font-bold rounded-full mb-4 tracking-wide uppercase">Try With Tomato</span>
+<h3 class="text-3xl font-bold text-white mb-2">The Ultimate Grilled Cheese</h3>
+<p class="text-white/80 text-lg">Next-level comfort food with a smoky kick.</p>
+</div>
+</div>
+
+<!-- Recipe 2 -->
+<div class="group relative rounded-[2rem] overflow-hidden aspect-square cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_ev__NNzyamnksQoJ6LggAWn-lU_tSiNPszm9TY7jzZcNlimzpupnuxfQgLkijHF4PrV6Ppf4E2m8iv3dwIuto-nzAes6JMd33iIhUu5trGe_q14fTQbtWt6USUVDfynsqVOf70I-_qg0BglI_V6MAYNWBRxFqESr5iO5Csw49woSbVMRKx9LLEbPiMyoMdBB2z6LOv5b2mgYZJVejFXjd-Z0NcTmvdvyqTWGv5As3rPFFFfpaxeXczfUSLfqSDFXQYED75-adcJ3");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-8">
+<span class="inline-block px-4 py-2 bg-secondary text-white text-xs font-bold rounded-full mb-4 tracking-wide uppercase">Try With Coriander</span>
+<h3 class="text-3xl font-bold text-white mb-2">Classic Samosa Dipping</h3>
+<p class="text-white/80 text-lg">Fresh herb brightness meets crispy gold.</p>
+</div>
+</div>
+
+<!-- Recipe 3 -->
+<div class="group relative rounded-[2rem] overflow-hidden aspect-square cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFpmigUMRJtH-FZHIc4Y_GtEbrrFMlccQQQdgK1M2zsghNchnL16zdq2l_WifkMMnlbNNDa7eYAuCvi0mZE_3jUsQGPYrcxcUqagrNauNRs4sk40_qYUOEDFFXPo7QQ05_RHa_vPDZPzNp3vqfvLvaIu4MTzgFmul2RevQlVFyUGc_5sNUHrIMuwGL3lAL4SmgF4pVcVicBQW_Gd9tQ45R9J5M6sbvVJiRibJAPDPVMRyHUYeuZJhqmdFEqpzLAiJXJcvb72XZxeAj");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-8">
+<span class="inline-block px-4 py-2 bg-orange-600 text-white text-xs font-bold rounded-full mb-4 tracking-wide uppercase">Try With Garlic</span>
+<h3 class="text-3xl font-bold text-white mb-2">Charcuterie Upgrade</h3>
+<p class="text-white/80 text-lg">Bold flavor for strong cheeses.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-50 dark:bg-card-dark pt-24 pb-12 px-6">
+<div class="max-w-[1600px] mx-auto">
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24">
+<div class="space-y-6">
+<h2 class="text-3xl font-black text-gray-900 dark:text-white">Chutney Co.</h2>
+<p class="text-gray-500 dark:text-gray-400 max-w-xs">
+                    Making chutney cool again. Small batch, big flavor, zero compromise.
+                </p>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-wider text-sm">Shop</h4>
+<ul class="space-y-4 text-gray-600 dark:text-gray-400">
+<li><a href="shop.html" class="hover:text-primary transition-colors">All Flavors</a></li>
+<li><a href="shop.html" class="hover:text-primary transition-colors">Best Sellers</a></li>
+<li><a href="shop.html" class="hover:text-primary transition-colors">Gift Sets</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-wider text-sm">Company</h4>
+<ul class="space-y-4 text-gray-600 dark:text-gray-400">
+<li><a href="about.html" class="hover:text-primary transition-colors">About Us</a></li>
+<li><a href="recipes.html" class="hover:text-primary transition-colors">Recipes</a></li>
+<li><a href="#" class="hover:text-primary transition-colors">Wholesale</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-wider text-sm">Stay Spicy</h4>
+<p class="text-gray-500 dark:text-gray-400 mb-4 text-sm">Join the Sauce Squad for drops & deals.</p>
+<form class="flex gap-2">
+<input class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark py-3 px-4 focus:ring-primary focus:border-primary" placeholder="Email address" type="email"/>
+<button class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 p-3 rounded-xl hover:opacity-90">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+<p>© 2023 Chutney Co. Crafted with spice.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="hover:text-primary transition-colors" href="#">TikTok</a>
+<a class="hover:text-primary transition-colors" href="#">Twitter</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+</body></html>
